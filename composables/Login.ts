@@ -33,9 +33,7 @@ export const useLogin = () => {
       return { error: errorValue, pending: ref(false) }
     }
 
-
     const userStore = useUserStore()
-
 
     const { data, pending, error, refresh } = await useAsyncData<IUser>(
       'login',
@@ -54,11 +52,20 @@ export const useLogin = () => {
     return { data, pending, error, refresh }
   }
 
+  const signout = () => {
+
+    const userStore = useUserStore()
+    userStore.setUser(null)
+    const cookie = useCookie("basgelsin_auth")
+    cookie.value = ""
+  }
+
 
 
   return {
     email,
     password,
-    login
+    login,
+    signout
   }
 }
