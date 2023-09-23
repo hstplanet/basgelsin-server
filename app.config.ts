@@ -1,6 +1,6 @@
 export default defineAppConfig({
 
-    baseURL: "https://server.hstplanet.com/api/"
+    baseURL: "http://localhost:5057/api/"
 
 })
 

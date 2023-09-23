@@ -1,28 +1,15 @@
 import { useUserStore } from "~/stores/User"
 import { IUser } from "~/types"
+import { useValitade } from "./Valitade"
 
 export const useLogin = () => {
 
   const email = ref("")
   const password = ref("")
+  const { validateEmail } = useValitade()
 
 
   const app = useAppConfig()
-
-  function validateEmail(email: string) {
-    const errorValue = ref<string>("")
-    // E-posta adresi için regex deseni
-    var pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
-    // E-posta adresini kontrol et
-    if (pattern.test(email)) {
-      errorValue.value = ""
-      return { errorValue };
-    } else {
-      errorValue.value = "Email adresiniz doğru formatta değil"
-      return { errorValue };
-    }
-  }
 
 
 
